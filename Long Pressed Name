@@ -1,0 +1,22 @@
+class Solution:
+    def isLongPressedName(self, name: str, typed: str) -> bool:
+        list_typed=list(typed)
+        list_name=list(name)
+        prev=list_name[0];
+        for x in list_name:
+            if x!=prev:
+                while prev in list_typed and list_typed.index(prev)==0:
+                    list_typed.remove(prev)
+            if x in list_typed and list_typed.index(x)==0:
+                list_typed.remove(x)
+            else:
+                return False
+        
+            prev=x
+            
+        return True
+        
+            
+       
+        
+            
