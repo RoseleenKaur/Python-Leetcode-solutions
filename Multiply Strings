@@ -1,0 +1,55 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        nu1=num1 
+        nu2=num2
+        final=[]
+        lst=[]
+        countr=0
+        for i in reversed(list(nu1)):
+            car=0
+            lst=list()
+            for j in reversed(list(nu2)):
+                temp=int(j)*int(i)
+                temp=temp+car
+                car=0 if str(temp)[:-1]=='' else int(str(temp)[:-1])
+                last=int(str(temp)[-1])
+                lst.insert(0,last)
+            if car!=0:
+                lst.insert(0,car)
+            print(lst)
+            if countr==0:
+                final=lst
+            else:
+                final=self.summ(final,lst,countr)
+                print(final)
+            countr+=1
+        ans=''
+        if final[0]==0:
+            return '0'
+        for x in final:
+            ans+=str(x)
+        return ans
+    
+    def summ(self,final,lst,countr):
+        car=0
+        
+        summlst=final[len(final)-countr:]
+        for x in reversed(final[:-countr]):
+                y=lst[-1]
+                z=x+y+car
+                car=0 if str(z)[:-1]=='' else int(str(z)[:-1])
+                last=int(str(z)[-1])
+                summlst.insert(0,last)
+                lst.pop()
+        
+        for i in reversed(lst):
+            z=i+car
+            car=0 if str(z)[:-1]=='' else int(str(z)[:-1])
+            last=int(str(z)[-1])
+            summlst.insert(0,last)
+        if car!=0:
+            summlst.insert(0,car)
+        return summlst
+            
+               
+                
