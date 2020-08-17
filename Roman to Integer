@@ -1,0 +1,18 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        map={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        mapc={'IV':4,
+            'IX':9,'XL':40,'XC':90,'CD':400,'CM':900}
+        sum=0
+        list=[s[0]]
+        for x in s[1:]:
+            combo=str('' if len(list)==0 else list[-1])+x
+            if combo in mapc:
+                sum+=mapc[combo]
+                list.pop()
+            else:
+                list.append(x)
+        for i in list:
+            sum+=map[i]
+        return sum;
+                
