@@ -1,0 +1,12 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        list=[]
+        for x in s:
+            list.append(x)
+            if list[-2:] in [['[',']'], ['{','}'], ['(',')']]:
+                list=list[:-2]
+        if list==[]:
+            return True
+        return False
+            
+        
